@@ -19,7 +19,7 @@ www  WEB部署目录（或者子目录）
 │  │  ├─controller      控制器目录
 │  │  ├─model           模型目录
 │  │  └─view            视图目录
-│  ├─index              普通用户模块目录
+│  ├─user               学生/教师用户模块目录
 │  │  ├─controller      控制器目录
 │  │  ├─model           模型目录
 │  │  └─view            视图目录
