@@ -1,0 +1,45 @@
+{include file="public/head" /}
+</head>
+<body>
+{include file="public/top" /}
+<div class="am-cf admin-main">
+    {include file="public/nav" /}
+
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">操作日志</strong></div>
+            </div>
+
+            <div class="am-u-lg-10 am-u-md-10">
+                <table class="am-table am-table-bd am-table-striped admin-content-table">
+                    <thead>
+                    <tr>
+                        <th>操作</th>
+                        <th>操作者</th>
+                        <th>操作时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="rows" id="vo"}
+                    <tr>
+                        <td>{$vo.action}</td>
+                        <td>{$vo.username}</td>
+                        <td>{$vo.create_time}</td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                <span>共{$rows->total()}条记录</span>
+                <div class="pagination" style="float: right">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content end -->
+</div>
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<script src="__STATIC__/js/ajax_form.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+{include file="public/head" /}
+</head>
+<body>
+{include file="public/top" /}
+<div class="am-cf admin-main">
+    {include file="public/nav" /}
+
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">选课信息</strong></div>
+
+            </div>
+
+            <div class="am-u-md-12">
+                <div class="am-btn-toolbar">
+                    <div class="am-u-sm-12 am-u-md-4" style="float: right">
+                        <form method="post" action="/admin/student_course/index">
+                            <div class="am-form-group">
+                                <input type="text" name="keyword" value="{:input('request.keyword')}">
+                                <button type="submit" class="am-btn am-btn-default am-btn-xs">搜索</button>
+                                <a href="/admin/student_course/index" class="am-btn am-btn-default am-btn-xs">重置</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <table class="am-table am-table-bd am-table-striped admin-content-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>学生编号</th>
+                        <th>学生姓名</th>
+                        <th>课程编号</th>
+                        <th>课程名称</th>
+                        <th>开课教师</th>
+                        <th>选课时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="rows" id="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.student_id}</td>
+                        <td>{$vo.student}</td>
+                        <td>{$vo.course_id}</td>
+                        <td>{$vo.course_name}</td>
+                        <td>{$vo.teacher}</td>
+                        <td>{$vo.create_time}</td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                <span>共{$rows->total()}条记录</span>
+                <div class="pagination" style="float: right">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content end -->
+</div>
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<script src="__STATIC__/js/ajax_form.js"></script>
+<script>
+
+</script>
+</body>
+</html>

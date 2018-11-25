@@ -1,0 +1,95 @@
+{include file="public/head" /}
+</head>
+<body>
+{include file="public/top" /}
+<div class="am-cf admin-main">
+    {include file="public/nav" /}
+
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">我的课程</strong></div>
+
+            </div>
+
+            <div class="am-u-md-12">
+                <div class="am-btn-toolbar">
+                    <div class="am-u-sm-12 am-u-md-4" style="float: right">
+                        <form method="post" action="/user/Course/index">
+                            <div class="am-form-group">
+                                <input type="text" name="keyword" value="{:input('request.keyword')}">
+                                <button type="submit" class="am-btn am-btn-default am-btn-xs">搜索</button>
+                                <a href="/user/Course/index" class="am-btn am-btn-default am-btn-xs">重置</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <table class="am-table am-table-bd am-table-striped admin-content-table">
+                    <thead>
+                    <tr>
+                        <th>课程编号</th>
+                        <th>课程名称</th>
+                        <th>课程类别</th>
+                        <th>上课日</th>
+                        <th>上课地点</th>
+                        <th>上课时间</th>
+                        <th>限选人数</th>
+                        <th>已选人数</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="rows" id="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.type}</td>
+                        <td>星期{$vo.day}</td>
+                        <td>{$vo.classroom}</td>
+                        <td>第{$vo.begin_lesson}-{$vo.end_lesson}节课</td>
+                        <td>{$vo.limit_student_count}</td>
+                        <td>{$vo.real_student_count}</td>
+                        <td>
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary" onclick="join({$vo.id})"><span class="am-icon-pencil-square-o"></span> 退选</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                <span>共{$rows->total()}条记录</span>
+                <div class="pagination" style="float: right">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<script>
+    function join(id) {
+        if (id == '') {
+            layer.msg('参数获取失败,请刷新重试', {time: 1500, icon: 5});
+            return false;
+        }
+        layer.confirm('确认退选该课程吗?', function (index) {
+            $.post("{:url('user/Course/dropOut')}", {id: id}, function (res) {
+                if (res.code == 0) {
+                    layer.msg(res.msg, {time: 1500, icon: 5});
+                } else {
+                    layer.msg(res.msg, {time: 1500, icon: 6});
+                    setInterval(function(){
+                        window.location.href = '/user/course/index';
+                    },1500);
+                }
+            });
+        });
+
+    }
+</script>
+</body>
+</html>
