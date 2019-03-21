@@ -1,19 +1,14 @@
 {include file="public/head" /}
-<style>.am-popup{height: 350px}</style>
+<style>.am-popup{height: 350px}.admin-main{padding-top:0}</style>
 </head>
 <body>
-{include file="public/top" /}
 <div class="am-cf admin-main">
-    {include file="public/nav" /}
-
     <!-- content start -->
     <div class="admin-content">
         <div class="admin-content-body">
             <div class="am-cf am-padding">
                 <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">基础信息管理</strong> / <small>课程类别管理</small></div>
-
             </div>
-
             <div class="am-u-md-10">
                 <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
@@ -96,9 +91,7 @@
         </div>
     </div>
 </div>
-<!-- content end -->
 </div>
-<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
 <script src="__STATIC__/js/ajax_form.js"></script>
 <script>
     $(function(){

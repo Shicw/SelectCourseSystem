@@ -13,7 +13,19 @@ use think\Db;
 
 class Index extends AdminBaseController
 {
+    /**
+     * 后台iframe框架
+     * @return mixed
+     */
     public function index(){
+        return $this->fetch();
+    }
+
+    /**
+     * 默认主页
+     * @return mixed
+     */
+    public function center(){
         //获取选课起止时间设置
         $selectStartStopTime = Db::name('option')->where('name','select_start_and_stop_time')->value('value');
         $selectStartStopTime = json_decode($selectStartStopTime,1);
