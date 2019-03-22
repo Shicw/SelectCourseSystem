@@ -13,7 +13,7 @@ use think\Db;
 class CourseType extends AdminBaseController
 {
     /**
-     * 专业管理页
+     * 类别管理页
      */
     public function index(){
         $rows = Db::name('course_type')
@@ -28,7 +28,7 @@ class CourseType extends AdminBaseController
         return $this->fetch();
     }
     /**
-     * 添加专业
+     * 添加类别
      */
     public function addPost(){
         if(!$this->request->isPost()){

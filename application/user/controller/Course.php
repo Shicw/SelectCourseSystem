@@ -45,7 +45,6 @@ class Course extends UserBaseController
      * 我创建的课程
      */
     public function myCreate(){
-
         //关键字查询
         $request = input('request.');
         $keyword = '';
