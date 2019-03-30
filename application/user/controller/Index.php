@@ -14,6 +14,12 @@ class Index extends UserBaseController
     public function index(){
         //获取登录用户信息
         $user = getUser();
+        $this->assign($user);
+        return $this->fetch();
+    }
+    public function center(){
+        //获取登录用户信息
+        $user = getUser();
         $user['major'] = Db::name('major')->where('id',$user['major_id'])->value('name');
         $user['class'] = Db::name('class')->where('id',$user['class_id'])->value('name');
         $this->assign($user);
